@@ -22,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
         const tempdir = vscode.workspace
             .getConfiguration('createtmpfile')
-            .get('tmpDir', os.tmpdir())
+            .get('tmpDir') || os.tmpdir()
 
         vscode.window.showInputBox(inputOptions)
             .then(input => `${tempdir}${sep}${input}`)
